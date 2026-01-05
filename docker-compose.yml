@@ -1,0 +1,55 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    container_name: parking-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 17022003
+      POSTGRES_DB: parking_reservation
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build: ./parking-backend
+    container_name: parking-backend
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_USER: postgres
+      DB_PASSWORD: 17022003
+      DB_DATABASE: parking_reservation
+      DB_PORT: 5432
+      JWT_SECRET: secret123
+    ports:
+      - "5000:5000"
+
+  frontend:
+    build: ./parking-frontend
+    container_name: parking-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+  
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    restart: always
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@pg.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    depends_on:
+      - db
+
+
+
+volumes:
+  pgdata:
