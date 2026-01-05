@@ -30,12 +30,15 @@ services:
       - "5000:5000"
 
   frontend:
-    build: ./parking-frontend
-    container_name: parking-frontend
-    ports:
-      - "3000:80"
-    depends_on:
-      - backend
+   build:
+    context: ./parking-frontend
+    dockerfile: Dockerfile
+   container_name: parking-frontend
+   ports:
+    - "3000:80"
+   depends_on:
+    - backend
+
   
   pgadmin:
     image: dpage/pgadmin4
