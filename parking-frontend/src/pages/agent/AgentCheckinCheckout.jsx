@@ -37,6 +37,15 @@ export default function AgentCheckinCheckout() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-100 via-white to-indigo-200">
 
+<button
+      onClick={() => {
+        localStorage.clear();
+        window.location.href = "/login";
+      }}
+      className="absolute top-5 right-5 px-4 py-2 bg-red-500 text-white font-semibold rounded-xl shadow hover:bg-red-600 active:scale-95 transition"
+    >
+      Logout
+    </button>
       <div className="w-full max-w-lg bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl px-8 py-7">
 
         <h2 className="text-3xl font-bold text-center text-gray-800">

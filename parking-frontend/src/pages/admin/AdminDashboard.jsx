@@ -24,12 +24,7 @@ export default function AdminDashboard() {
     >
       Logout
     </button>
-    <button
-      onClick={() => (window.location.href = "/admin/users")}
-      className="absolute top-5 left-5 px-4 py-2 bg-blue-600 text-white rounded-xl shadow hover:bg-blue-700">
-      👥 Users
-    </button>
-
+    
     {/* Main container */}
     <div className="w-full max-w-5xl bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-100 p-8">
 
