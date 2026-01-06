@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://parking-backend:5000"
+  baseURL: "http://18.212.78.31:5000"
 });
 
 api.interceptors.request.use((config) => {
