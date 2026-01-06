@@ -21,7 +21,23 @@ router.post("/", auth, async (req, res) => {
     const { spot_id, car_plate } = req.body;
 
     const user_id = req.user.id;
+    
 
+    // ============================
+    // 1) Validate car plate format
+    // ============================
+
+    if (!car_plate || car_plate.trim() === "") {
+      return res.status(400).json({ error: "Car plate is required" });
+    }
+
+    // Algerian or foreign plate accepted
+    if (!algerianPlate.test(car_plate) && !foreignPlate.test(car_plate)) {
+      return res.status(400).json({
+        error:
+          "Invalid plate format. Examples: 123456-123-12 (Algerian) or AA-1234 (Foreign)"
+      });
+    }
 
     // 1) vérifier si la place est déjà marquée occupée
     const spotCheck = await pool.query(
