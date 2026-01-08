@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_USER = "ines234"
         BACKEND_IMAGE  = "ines234/parking-backend"
         FRONTEND_IMAGE = "ines234/parking-frontend"
         NAMESPACE = "parking"
@@ -10,17 +9,15 @@ pipeline {
 
     stages {
 
-       
-
         stage('Build Backend Image') {
             steps {
-                sh 'docker build -t $BACKEND_IMAGE:latest ./parking-backend'
+                sh 'docker build -t $BACKEND_IMAGE:latest parking-backend'
             }
         }
 
         stage('Build Frontend Image') {
             steps {
-                sh 'docker build -t $FRONTEND_IMAGE:latest ./parking-frontend'
+                sh 'docker build -t $FRONTEND_IMAGE:latest parking-frontend'
             }
         }
 
@@ -28,11 +25,11 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(
                     credentialsId: 'dockerhub',
-                    usernameVariable: 'USER',
-                    passwordVariable: 'PASS'
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASS'
                 )]) {
                     sh '''
-                    echo $PASS | docker login -u $USER --password-stdin
+                    echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
                     docker push $BACKEND_IMAGE:latest
                     docker push $FRONTEND_IMAGE:latest
                     '''
