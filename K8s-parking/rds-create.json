@@ -1,0 +1,16 @@
+{
+  "DBInstanceIdentifier": "parking-db",
+  "AllocatedStorage": 20,
+  "DBInstanceClass": "db.t3.micro",
+  "Engine": "postgres",
+  "EngineVersion": "15",
+  "PubliclyAccessible": false,
+  "MultiAZ": false,
+  "StorageType": "gp2",
+  "DBSubnetGroupName": "parking-db-subnet-group",
+  "Port": 5432,
+  "DBName": "parkingdb",
+  "MasterUsername": "postgres",
+  "MasterUserPassword": "StrongPassword123!",
+  "VpcSecurityGroupIds": ["sg-06162a56d6eb463e0"]
+}

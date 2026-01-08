@@ -1,0 +1,10 @@
+{
+  "DBSubnetGroupName": "parking-db-subnet-group",
+  "DBSubnetGroupDescription": "Subnet group for parking app RDS",
+  "SubnetIds": [
+    "subnet-0ba77213ae4fd217a",
+    "subnet-00117d30d091c9c46",
+    "subnet-07f48fd717d5eb20d",
+    "subnet-0fbfba821c9a0321f"
+  ]
+}

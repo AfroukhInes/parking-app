@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: parking-frontend-service
+  namespace: parking
+spec:
+  type: LoadBalancer
+  selector:
+    app: parking-frontend
+  ports:
+  - port: 80
+    targetPort: 80
