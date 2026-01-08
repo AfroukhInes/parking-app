@@ -10,12 +10,7 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                git branch: 'main',
-                    url: 'https://github.com/AfroukhInes/parking-app.git'
-            }
-        }
+       
 
         stage('Build Backend Image') {
             steps {
